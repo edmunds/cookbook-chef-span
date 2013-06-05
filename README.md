@@ -11,13 +11,19 @@ Attributes
 `node['chef_span']['scripts_dir']` - filesystem location for chef-span.rb script
 
 `node['chef_span']['cron_minute']` - cron minute schedule for running chef-span.rb
+
 `node['chef_span']['cron_hour']` - cron hour schedule for running chef-span.rb
+
 `node['chef_span']['cron_day']` - cron day schedule for running chef-span.rb
+
 `node['chef_span']['cron_month']` - cron month schedule for running chef-span.rb
+
 `node['chef_span']['cron_weekday']` - cron weekday schedule for running chef-span.rb
 
 `node['chef_span']['input_file']` - Optional file name for the input file for chef-span.rb
+
 `node['chef_span']['output_dir']` - filesystem location for the output file for chef-span.rb
+
 `node['chef_span']['output_file']` - file name for the output file for chef-span.rb
 
 `node['chef_span']['apis']` - array for chef server API target and credentials.
@@ -39,7 +45,7 @@ First: Use a role or wrapper cookbook to set node['chef_span']['apis'] with the 
 
 Second: Make sure the pem(s) you populated in the first step exist on the system.  If the pem doesn't exist, the recipe will error when chef-client is run.
 
-Third: at the time of this writing, chef-span will attempt to query nfs filesystems and "connections" out of the node data for every node in the chef server.  NFS filesystems are available by default with ohai, but "connections" are not.  "Connection" data is gathered via a ohai plugin, and is a rolling summary of recent TCP network connections.  The connection data GREATLY increases the value of the graph that is output by chef-span.  See https://github.com/edmunds/connections for additional details.   
+Third: at the time of this writing, chef-span will attempt to query nfs filesystems and "connections" out of the node data for every node in the chef server.  NFS filesystems are available by default with ohai, but "connections" are not.  "Connection" data is gathered via an ohai plugin, and is a rolling summary of recent TCP network connections.  The connection data GREATLY increases the value of the graph that is output by chef-span.  See https://github.com/edmunds/cookbook-connections for additional details.   
 
 Fourth, if there are manual nodes and edges you want to include in the graph, you can optionally create an input file, and then set node['chef_span']['input_file']using a role or wrapper cookbook.  I advise against this ; manual entries are future problems.  For those who proceed nonetheless, the syntax of the input file can be found in SAMPLE_INPUT.txt.
 
