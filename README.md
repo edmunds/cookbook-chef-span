@@ -5,6 +5,8 @@ Installs a script (chef-span.rb) for querying connectivity information out of ch
 
 The output of the chef-span.rb script is a collection of vertices and edges which can be used with graphing software to visualize your network.
 
+For details on and examples of working with the output graph (file), see https://github.com/edmunds/chef-span
+
 Attributes
 ==========
 
@@ -48,6 +50,8 @@ Second: Make sure the pem(s) you populated in the first step exist on the system
 Third: at the time of this writing, chef-span will attempt to query nfs filesystems and "connections" out of the node data for every node in the chef server.  NFS filesystems are available by default with ohai, but "connections" are not.  "Connection" data is gathered via an ohai plugin, and is a rolling summary of recent TCP network connections.  The connection data GREATLY increases the value of the graph that is output by chef-span.  See https://github.com/edmunds/cookbook-connections for additional details.   
 
 Fourth, if there are manual nodes and edges you want to include in the graph, you can optionally create an input file, and then set node['chef_span']['input_file']using a role or wrapper cookbook.  I advise against this ; manual entries are future problems.  For those who proceed nonetheless, the syntax of the input file can be found in SAMPLE_INPUT.txt.
+
+The purpose of this cookbook is to drive the chef-span.rb script, the output of which is a collection of vertices and edges which can be used with graphing software to visualize your network.  For details on and examples of working with the output graph (file), see https://github.com/edmunds/chef-span
 
 Changes
 =======
